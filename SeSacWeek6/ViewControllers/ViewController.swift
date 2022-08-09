@@ -33,7 +33,8 @@ class ViewController: UIViewController {
         
         searchBlog()
     }
-
+    
+    
 
     // MARK: - Method
     func searchBlog() {

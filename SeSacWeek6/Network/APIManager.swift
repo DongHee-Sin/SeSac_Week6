@@ -23,7 +23,7 @@ class KakaoAPIManager {
         guard let query = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
         let url = type.requestURL + query
         
-        AF.request(url, method: .get, headers: header).validate().responseData { response in
+        AF.request(url, method: .get, headers: header).validate().responseData(queue: .global()) { response in
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
