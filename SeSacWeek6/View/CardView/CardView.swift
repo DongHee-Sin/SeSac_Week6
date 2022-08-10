@@ -25,7 +25,6 @@ class CardView: UIView {
 
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var likeButton: UIButton!
-    @IBOutlet weak var contentLabel: UILabel!
     
     // 초기화
     required init?(coder: NSCoder) {
@@ -33,8 +32,13 @@ class CardView: UIView {
         
         let view = UINib(nibName: "CardView", bundle: nil).instantiate(withOwner: self).first as! UIView
         view.frame = bounds
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .clear
         self.addSubview(view)
+        
+        // CardView를 인터페이스 빌더 기반으로 만들고, 오토레이아웃도 설정했는데 false가 아닌 true가 나옴..
+        // 이유 : 아래에서 사용한 view는 코드 기반으로 생성한 view라서 그런거임
+        // true : 오토레이아웃이 적용되는 관점보다 오토리사이징이 내부적으로 constraints 처리가 됨..
+        print("CardView: ", view.translatesAutoresizingMaskIntoConstraints)
     }
     
 }

@@ -15,6 +15,8 @@ class CardCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        //print("CardCollectionViewCell", #function)
+        
         setupUI()
     }
 
@@ -23,5 +25,11 @@ class CardCollectionViewCell: UICollectionViewCell {
         cardView.posterImageView.backgroundColor = .lightGray
         cardView.posterImageView.layer.cornerRadius = 10
         cardView.likeButton.tintColor = .systemPink
+    }
+    
+    
+    // MARK: - 재사용되기 위해 준비하는 메서드 (reuse되기 전에 호출)
+    override func prepareForReuse() {
+        super.prepareForReuse()
     }
 }

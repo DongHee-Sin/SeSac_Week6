@@ -10,7 +10,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardView" customModule="SeSacWeek6" customModuleProvider="target">
             <connections>
-                <outlet property="contentLabel" destination="oU6-AQ-vn2" id="cqN-hG-LhL"/>
                 <outlet property="likeButton" destination="mZl-0g-Dcv" id="dgU-1X-I9b"/>
                 <outlet property="posterImageView" destination="aFk-37-NZt" id="mhT-qs-jkP"/>
             </connections>
@@ -35,17 +34,9 @@
                         <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="30"/>
                     </buttonConfiguration>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oU6-AQ-vn2">
-                    <rect key="frame" x="62" y="97.5" width="37.5" height="18"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="oU6-AQ-vn2" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="AXU-4I-c31"/>
-                <constraint firstItem="oU6-AQ-vn2" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="CSQ-ax-OSy"/>
                 <constraint firstAttribute="trailing" secondItem="mZl-0g-Dcv" secondAttribute="trailing" constant="8" id="IaV-gz-3VM"/>
                 <constraint firstItem="aFk-37-NZt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Tl7-Mi-YkA"/>
                 <constraint firstAttribute="bottom" secondItem="aFk-37-NZt" secondAttribute="bottom" constant="8" id="agR-gt-YbL"/>
