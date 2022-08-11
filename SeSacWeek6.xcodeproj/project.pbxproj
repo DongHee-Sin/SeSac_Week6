@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D0072CF828A4939600B7FE16 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0072CF728A4939600B7FE16 /* MapViewController.swift */; };
 		D01F083328A3306D008356F7 /* ReusableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01F083228A3306D008356F7 /* ReusableViewProtocol.swift */; };
 		D01F083528A343E5008356F7 /* TMDBAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01F083428A343E5008356F7 /* TMDBAPIManager.swift */; };
 		D09507AC28A1E03100976C40 /* SeSacButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09507AB28A1E03100976C40 /* SeSacButton.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D0072CF728A4939600B7FE16 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		D01F083228A3306D008356F7 /* ReusableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViewProtocol.swift; sourceTree = "<group>"; };
 		D01F083428A343E5008356F7 /* TMDBAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAPIManager.swift; sourceTree = "<group>"; };
 		D09507AB28A1E03100976C40 /* SeSacButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSacButton.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				D0F2AC7828A0900200E575E8 /* ViewController.swift */,
 				D0F2AC9E28A0ABED00E575E8 /* ClosureViewController.swift */,
 				D09507B728A1F63600976C40 /* MainViewController.swift */,
+				D0072CF728A4939600B7FE16 /* MapViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				D0F2AC9B28A0951200E575E8 /* URL+Extension.swift in Sources */,
 				D01F083528A343E5008356F7 /* TMDBAPIManager.swift in Sources */,
 				D0F2AC9D28A0A77F00E575E8 /* APIManager.swift in Sources */,
+				D0072CF828A4939600B7FE16 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +423,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PW2RLJT734;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SeSacWeek6/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -447,6 +452,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PW2RLJT734;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SeSacWeek6/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

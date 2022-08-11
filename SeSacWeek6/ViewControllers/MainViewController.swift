@@ -88,7 +88,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     // 매개변수가 아닌 명확한 아웃렛을 사용하여 dequeue를 수행하면, 특정 collectionview의 셀을 재사용하게 됨
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        //print("MainViewController", #function, indexPath)
+        print(#function)
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardCollectionViewCell", for: indexPath) as? CardCollectionViewCell else {
             return UICollectionViewCell()
