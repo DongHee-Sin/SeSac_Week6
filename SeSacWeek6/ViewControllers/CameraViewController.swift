@@ -9,6 +9,9 @@ import UIKit
 
 import YPImagePicker
 
+// PHPicker 1.
+import PhotosUI
+
 
 class CameraViewController: UIViewController {
 
@@ -17,6 +20,9 @@ class CameraViewController: UIViewController {
     // UIImagePickerController1. 컨트롤러 인스턴스 생성
     let picker = UIImagePickerController()
     
+    // PHPicker2. 인스턴스 선언
+    var phpicker: PHPickerViewController!
+    
     
     
     override func viewDidLoad() {
@@ -24,6 +30,11 @@ class CameraViewController: UIViewController {
         
         // UIImagePickerController2. Delegate 설정
         picker.delegate = self
+        
+        
+        // PHPicker4. 인스턴스 생성 및 Delegate 설정
+        phpicker = makePHPickerInstance()
+        phpicker?.delegate = self
     }
     
     
@@ -71,21 +82,9 @@ class CameraViewController: UIViewController {
     }
     
     
-    // UIImagePickerController
+    // PHPickerViewController Test
     @IBAction func photoLibraryButtonTapped(_ sender: UIButton) {
-        // 기기에서 해당 기능이 사용 가능한지 여부를 파악
-        guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else {
-            print("사용자에게 사용불가하다고 알려주기 : 얼럿, 토스트")
-            return
-        }
-        
-        // 어떤 기능을 사용할건지 (picker에서)
-        picker.sourceType = .photoLibrary
-        
-        // 편집 가능 여부 (Default : false)
-        picker.allowsEditing = true
-        
-        present(picker, animated: true)
+        present(phpicker, animated: true)
     }
     
     
@@ -109,6 +108,20 @@ class CameraViewController: UIViewController {
         
     }
     
+    
+    
+    
+    // MARK: - PHPickerViewController
+    func makePHPickerInstance() -> PHPickerViewController {
+        // PHPicker3. PHPickerViewController를 구성하는 정보를 포함한 구조체 인스턴스를 생성 (PHPickerConfiguration)
+        var configuration = PHPickerConfiguration()
+        configuration.selectionLimit = 3            // 최대 선택 가능 개수 (다중 선택 지원)
+        configuration.filter = .images              // 표시하는 데이터 유형 (4가지 종류가 있다.)
+
+        let phpickerVC = PHPickerViewController(configuration: configuration)
+        
+        return phpickerVC
+    }
 }
 
 
@@ -136,4 +149,27 @@ extension CameraViewController: UIImagePickerControllerDelegate, UINavigationCon
         print(#function)
         dismiss(animated: true)
     }
+}
+
+
+
+// PHPicker5. Delegate 채택
+extension CameraViewController: PHPickerViewControllerDelegate {
+    
+    // PHPicker6. 필수 메서드 구현 (선택이 완료되면 호출)
+    // 다중 선택을 지원하므로, 매개변수로 들어온 선택값이 배열 형태
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        if let itemProvider = results.first?.itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
+            itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
+                guard let selectedImage = image as? UIImage else { return }
+                
+                DispatchQueue.main.async {
+                    self?.resultImageView.image = selectedImage
+                    self?.dismiss(animated: true)
+                }
+            }
+        }
+    }
+    
+    
 }
