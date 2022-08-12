@@ -10,11 +10,13 @@ import Foundation
 enum EndPoint {
     case blog
     case cafe
+    case naverCFR
     
     var requestURL: String {
         switch self {
         case .blog: return URL.makeEndPointString("blog?query=")
         case .cafe: return URL.makeEndPointString("cafe?query=")
+        case .naverCFR: return "https://openapi.naver.com/v1/vision/celebrity"
         }
     }
 }

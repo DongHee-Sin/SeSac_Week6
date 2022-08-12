@@ -16,6 +16,7 @@
 		D09507B328A1F37700976C40 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09507B128A1F37700976C40 /* CardCollectionViewCell.swift */; };
 		D09507B428A1F37700976C40 /* CardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D09507B228A1F37700976C40 /* CardCollectionViewCell.xib */; };
 		D09507B828A1F63600976C40 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09507B728A1F63600976C40 /* MainViewController.swift */; };
+		D0C55E8828A64D1000CE2DC6 /* ClovaFaceAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C55E8728A64D1000CE2DC6 /* ClovaFaceAPIManager.swift */; };
 		D0E15B1228A1FC4500C7CC7E /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E15B1128A1FC4500C7CC7E /* MainTableViewCell.swift */; };
 		D0F2AC7528A0900200E575E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2AC7428A0900200E575E8 /* AppDelegate.swift */; };
 		D0F2AC7728A0900200E575E8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F2AC7628A0900200E575E8 /* SceneDelegate.swift */; };
@@ -46,6 +47,7 @@
 		D09507B128A1F37700976C40 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		D09507B228A1F37700976C40 /* CardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCollectionViewCell.xib; sourceTree = "<group>"; };
 		D09507B728A1F63600976C40 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D0C55E8728A64D1000CE2DC6 /* ClovaFaceAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClovaFaceAPIManager.swift; sourceTree = "<group>"; };
 		D0E15B1128A1FC4500C7CC7E /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		D0F2AC7128A0900200E575E8 /* SeSacWeek6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSacWeek6.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0F2AC7428A0900200E575E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				D0F2AC9A28A0951200E575E8 /* URL+Extension.swift */,
 				D0F2AC9C28A0A77F00E575E8 /* APIManager.swift */,
 				D01F083428A343E5008356F7 /* TMDBAPIManager.swift */,
+				D0C55E8728A64D1000CE2DC6 /* ClovaFaceAPIManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				D09507B328A1F37700976C40 /* CardCollectionViewCell.swift in Sources */,
 				D0F2AC9928A0949A00E575E8 /* EndPoint.swift in Sources */,
 				D09507B028A1E65C00976C40 /* CardView.swift in Sources */,
+				D0C55E8828A64D1000CE2DC6 /* ClovaFaceAPIManager.swift in Sources */,
 				D0F2AC9628A0911E00E575E8 /* APIKey.swift in Sources */,
 				D0F2AC7728A0900200E575E8 /* SceneDelegate.swift in Sources */,
 				D09507AC28A1E03100976C40 /* SeSacButton.swift in Sources */,

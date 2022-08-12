@@ -7,8 +7,6 @@
 
 import UIKit
 
-import Alamofire
-import SwiftyJSON
 import YPImagePicker
 
 
@@ -104,31 +102,11 @@ class CameraViewController: UIViewController {
     // 문자열이 아닌 파일, 이미지, PDF 파일 자체가 그대로 전송 되지 않음. => 텍스트 형태로 인코딩하여 보내야 함
     // 어떤 종류의 파일이 서버에게 전달되는지 명시하는 코드가 필요함 -> Content-Type
     @IBAction func clovaFaceButtonTapped(_ sender: UIButton) {
-        let url = "https://openapi.naver.com/v1/vision/celebrity"
         
-        let header: HTTPHeaders = [
-            "X-Naver-Client-Id": "S2CRE1FBnuy66QjrglFR",
-            "X-Naver-Client-Secret": "8f80i9RFr2",
-            "Content-Type": "multipart/form-data"    // Content-Type은 기본값이 라이브러리에 내장되어 있음
-        ]
-        
-        // UIImage를 텍스트 형태(바이너리 타입)로 변환해서 전달
-        guard let imageData = resultImageView.image?.jpegData(compressionQuality: 0.3) else { return }
-        
-        AF.upload(multipartFormData: { multipartFormData in
-            multipartFormData.append(imageData, withName: "image")
-        }, to: url, headers: header)
-        .validate(statusCode: 200...500).responseData { response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                
-                print(json)
-                
-            case .failure(let error):
-                print(error)
-            }
+        if let image = resultImageView.image {
+            ClovaFaceAPIManager.shared.requestCFR(image: image)
         }
+        
     }
     
 }

@@ -29,7 +29,7 @@ import CoreLocation
 
 
 class MapViewController: UIViewController {
-
+    
     @IBOutlet weak var mapView: MKMapView!
     
     // Location2. 위치에 대한 대부분을 담당
@@ -134,6 +134,8 @@ extension MapViewController {
             // 사용자가 위치를 허용해둔 상태라면, startUpdatingLocation을 통해 didUpdateLocations 메서드가 실행
             // Location5의 프로토콜 메서드가 실행됨(?)
             locationManager.startUpdatingLocation()
+            
+            print(locationManager.accuracyAuthorization.rawValue)
         default:
             print("DEFAULT")
         }
