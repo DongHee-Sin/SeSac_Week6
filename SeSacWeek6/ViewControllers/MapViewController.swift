@@ -35,6 +35,9 @@ class MapViewController: UIViewController {
     // Location2. 위치에 대한 대부분을 담당
     let locationManager = CLLocationManager()
     
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,8 +55,10 @@ class MapViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        showRequestLocationServiceAlert()
+        //showRequestLocationServiceAlert()
     }
+    
+    
     
     
     func setRegionAndAnnotation(center: CLLocationCoordinate2D) {
@@ -75,11 +80,13 @@ class MapViewController: UIViewController {
 }
 
 
+
+
 // 위치 관련된  User Defined 메서드
 extension MapViewController {
     
-    // 실질적으로 가장 먼저 동작할 메서드
     // Location7. iOS 버전에 따른 분기 처리 및 iOS 위치 서비스 활성화 여부 확인
+    // 실질적으로 가장 먼저 동작할 메서드
     // 위치 서비스가 켜져 있다면 권한을 요청하고, 꺼져 있다면 커스텀 얼럿으로 상황 알려주기
     
     // CLAuthorizationStatus
@@ -175,7 +182,7 @@ extension MapViewController: CLLocationManagerDelegate {
         
         // 위치 업데이트 멈춰!! => 무한 업데이트하는거 방지 => 실제 위치가 변경되면 위에 best 저게 바뀐거 적용 알아서 해줌..(?)
         // 적당한 시점에 멈춰주지 않으면 배터리를 많이 잡아먹는 문제가 될지도..
-        locationManager.stopUpdatingLocation()
+        //locationManager.stopUpdatingLocation()
     }
     
     
