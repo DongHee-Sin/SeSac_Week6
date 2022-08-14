@@ -23,6 +23,9 @@ class CameraViewController: UIViewController {
     // PHPicker2. 인스턴스 선언
     var phpicker: PHPickerViewController!
     
+    // YPImagePicker 인스턴스
+    let ypPicker = YPImagePicker()
+    
     
     
     override func viewDidLoad() {
@@ -35,19 +38,15 @@ class CameraViewController: UIViewController {
         // PHPicker4. 인스턴스 생성 및 Delegate 설정
         phpicker = makePHPickerInstance()
         phpicker?.delegate = self
+        
+        setYPPicker()
     }
     
     
     // MARK: - Method
     
-    // OpenSource
-    // 권한은 다 허용 (일단)
-    // 권한 문구 등도 내부적으로 구현되어 있음 => 실제로 카메라를 쓸 때 권한을 요청 (정책적인.. 그런거.. 권한이 필요한 상황에서 요청해야 함)
-    @IBAction func ypimagePickerButtonTapped(_ sender: UIButton) {
-        let picker = YPImagePicker()
-        
-        // 사진을 선택한 후
-        picker.didFinishPicking { [unowned picker] items, _ in
+    func setYPPicker() {
+        ypPicker.didFinishPicking { [unowned ypPicker] items, _ in
             if let photo = items.singlePhoto {
                 print(photo.fromCamera) // Image source (camera or library)
                 print(photo.image) // Final image selected by the user
@@ -57,10 +56,16 @@ class CameraViewController: UIViewController {
                 
                 self.resultImageView.image = photo.image
             }
-            picker.dismiss(animated: true, completion: nil)
+            ypPicker.dismiss(animated: true, completion: nil)
         }
-        
-        present(picker, animated: true, completion: nil)
+    }
+    
+    
+    // OpenSource
+    // 권한은 다 허용 (일단)
+    // 권한 문구 등도 내부적으로 구현되어 있음 => 실제로 카메라를 쓸 때 권한을 요청 (정책적인.. 그런거.. 권한이 필요한 상황에서 요청해야 함)
+    @IBAction func ypimagePickerButtonTapped(_ sender: UIButton) {
+        present(ypPicker, animated: true, completion: nil)
     }
     
     
@@ -88,7 +93,7 @@ class CameraViewController: UIViewController {
     }
     
     
-    // UIImagePickerController
+    // 이미지 저장
     @IBAction func saveToPhotoLibrary(_ sender: UIButton) {
         if let image = resultImageView.image {
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)

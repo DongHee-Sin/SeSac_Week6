@@ -51,15 +51,6 @@ class MapViewController: UIViewController {
     }
     
     
-    // Alert 테스트
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        //showRequestLocationServiceAlert()
-    }
-    
-    
-    
     
     func setRegionAndAnnotation(center: CLLocationCoordinate2D) {
 //        // 지도 중심 설정 : 애플맵 활용하여 좌표 복사 37.517829, 126.886270
@@ -69,10 +60,14 @@ class MapViewController: UIViewController {
         let region = MKCoordinateRegion(center: center, latitudinalMeters: 1000, longitudinalMeters: 1000)
         mapView.setRegion(region, animated: true)
         
-        
+        setAnnotation(location: center)
+    }
+    
+    
+    func setAnnotation(location: CLLocationCoordinate2D) {
         // 지도에 핀 추가
         let annotation = MKPointAnnotation()
-        annotation.coordinate = center
+        annotation.coordinate = location
         annotation.title = "SeSac!"
         
         mapView.addAnnotation(annotation)
@@ -93,6 +88,12 @@ extension MapViewController {
     // denined: 허용 안함 / 설정에서 추후에 거부된 / 위치 서비스 중지 / 비행기 모드
     // restricted : 앱에 권한 자체가 없는 경우 / 자녀 보호 기능 같은걸로 아예 제한된 상황
     func checkUserDeviceLocationServiceAuthorization() {
+        guard CLLocationManager.locationServicesEnabled() else {
+            // 디바이스 자체에 위치 권한이 부여되지 않은 경우
+            showRequestLocationServiceAlert()
+            return
+        }
+        
         let authorizationStatus: CLAuthorizationStatus
         
         if #available(iOS 14.0, *) {
@@ -103,13 +104,8 @@ extension MapViewController {
             authorizationStatus = CLLocationManager.authorizationStatus()
         }
         
-        // iOS 위치 서비스 활성화 여부 체크 : locationServicesEnabled() -> Bool
-        if CLLocationManager.locationServicesEnabled() {
-            // 위치 서비스가 활성화 되어 있으므로, 위치 권한 요청 가능해서 위치 권한 요청을 함
-            checkUserCurrentLocationAuthorization(authorizationStatus)
-        }else {
-            print("위치 서비스가 꺼져 있어서 위치 권한 요청을 못합니다.")
-        }
+        // 위치 서비스가 활성화 되어 있으므로, 위치 권한 요청 가능해서 위치 권한 요청을 함
+        checkUserCurrentLocationAuthorization(authorizationStatus)
     }
     
     
@@ -129,10 +125,11 @@ extension MapViewController {
             
         case .restricted, .denied:
             print("DENIED, 아이폰 설정으로 유도")
+            showRequestLocationServiceAlert()
         case .authorizedWhenInUse:       // 항상 사용하는 case도 사용하려면 info.plist에 해당 내용 추가해야 함.
             print("WHEN IN USE")
             // 사용자가 위치를 허용해둔 상태라면, startUpdatingLocation을 통해 didUpdateLocations 메서드가 실행
-            // Location5의 프로토콜 메서드가 실행됨(?)
+            // Location5의 프로토콜 메서드가 실행됨 => didUpdateLocations : 유저의 위치 정보를 성공적으로 받아올 때 호출
             locationManager.startUpdatingLocation()
             
             print(locationManager.accuracyAuthorization.rawValue)
@@ -184,7 +181,7 @@ extension MapViewController: CLLocationManagerDelegate {
         
         // 위치 업데이트 멈춰!! => 무한 업데이트하는거 방지 => 실제 위치가 변경되면 위에 best 저게 바뀐거 적용 알아서 해줌..(?)
         // 적당한 시점에 멈춰주지 않으면 배터리를 많이 잡아먹는 문제가 될지도..
-        //locationManager.stopUpdatingLocation()
+        locationManager.stopUpdatingLocation()
     }
     
     
@@ -200,7 +197,7 @@ extension MapViewController: CLLocationManagerDelegate {
     // iOS 14 이상 : 사용자의 권한 상태가 변경이 될 때, 위치 관리자를 생성할 때 호출됨
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         print(#function)
-        checkUserDeviceLocationServiceAuthorization()  // 상태가 변경되면 ,,, 다시 처음부터 권환 확인이 필요,,
+        checkUserDeviceLocationServiceAuthorization()  // 권한 상태가 변경되면, 다시 처음부터 권환 확인
     }
     
     // iOS 14 미만
